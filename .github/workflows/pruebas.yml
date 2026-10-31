@@ -10,12 +10,15 @@ permissions:
 jobs:
   pruebas:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['22.13.0', '24']
     steps:
       - name: Descargar el proyecto
         uses: actions/checkout@v4
       - name: Preparar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: ${{ matrix.node }}
       - name: Ejecutar las pruebas
         run: npm test

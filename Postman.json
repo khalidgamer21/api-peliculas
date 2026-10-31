@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "API Peliculas - pruebas del equipo",
-    "description": "Ejecutar las carpetas en orden. Los identificadores se guardan automaticamente. La ultima carpeta elimina los registros creados.",
+    "description": "Ejecutar las carpetas en orden: operaciones de los cinco modulos, validaciones del caso y limpieza de datos de prueba. Los identificadores se guardan automaticamente.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
@@ -53,7 +53,17 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Estado 201\", function () { pm.response.to.have.status(201); });",
-                  "if (pm.response.code === 201) pm.collectionVariables.set(\"generosId\", pm.response.json().id);"
+                  "if (pm.response.code === 201) pm.collectionVariables.set(\"generosId\", pm.response.json().id);",
+                  "pm.test(\"Datos guardados\", function () {",
+                  "  const expected = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));",
+                  "  const actual = pm.response.json();",
+                  "  Object.keys(expected).forEach(function (key) { pm.expect(actual[key]).to.eql(expected[key]); });",
+                  "});",
+                  "pm.test(\"Fechas automaticas\", function () {",
+                  "  const actual = pm.response.json();",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaCreacion))).to.eql(true);",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaActualizacion))).to.eql(true);",
+                  "});"
                 ]
               }
             }
@@ -134,7 +144,17 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });"
+                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Datos guardados\", function () {",
+                  "  const expected = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));",
+                  "  const actual = pm.response.json();",
+                  "  Object.keys(expected).forEach(function (key) { pm.expect(actual[key]).to.eql(expected[key]); });",
+                  "});",
+                  "pm.test(\"Fechas automaticas\", function () {",
+                  "  const actual = pm.response.json();",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaCreacion))).to.eql(true);",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaActualizacion))).to.eql(true);",
+                  "});"
                 ]
               }
             }
@@ -197,7 +217,17 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Estado 201\", function () { pm.response.to.have.status(201); });",
-                  "if (pm.response.code === 201) pm.collectionVariables.set(\"directoresId\", pm.response.json().id);"
+                  "if (pm.response.code === 201) pm.collectionVariables.set(\"directoresId\", pm.response.json().id);",
+                  "pm.test(\"Datos guardados\", function () {",
+                  "  const expected = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));",
+                  "  const actual = pm.response.json();",
+                  "  Object.keys(expected).forEach(function (key) { pm.expect(actual[key]).to.eql(expected[key]); });",
+                  "});",
+                  "pm.test(\"Fechas automaticas\", function () {",
+                  "  const actual = pm.response.json();",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaCreacion))).to.eql(true);",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaActualizacion))).to.eql(true);",
+                  "});"
                 ]
               }
             }
@@ -278,7 +308,17 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });"
+                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Datos guardados\", function () {",
+                  "  const expected = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));",
+                  "  const actual = pm.response.json();",
+                  "  Object.keys(expected).forEach(function (key) { pm.expect(actual[key]).to.eql(expected[key]); });",
+                  "});",
+                  "pm.test(\"Fechas automaticas\", function () {",
+                  "  const actual = pm.response.json();",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaCreacion))).to.eql(true);",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaActualizacion))).to.eql(true);",
+                  "});"
                 ]
               }
             }
@@ -341,7 +381,17 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Estado 201\", function () { pm.response.to.have.status(201); });",
-                  "if (pm.response.code === 201) pm.collectionVariables.set(\"productorasId\", pm.response.json().id);"
+                  "if (pm.response.code === 201) pm.collectionVariables.set(\"productorasId\", pm.response.json().id);",
+                  "pm.test(\"Datos guardados\", function () {",
+                  "  const expected = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));",
+                  "  const actual = pm.response.json();",
+                  "  Object.keys(expected).forEach(function (key) { pm.expect(actual[key]).to.eql(expected[key]); });",
+                  "});",
+                  "pm.test(\"Fechas automaticas\", function () {",
+                  "  const actual = pm.response.json();",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaCreacion))).to.eql(true);",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaActualizacion))).to.eql(true);",
+                  "});"
                 ]
               }
             }
@@ -422,7 +472,17 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });"
+                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Datos guardados\", function () {",
+                  "  const expected = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));",
+                  "  const actual = pm.response.json();",
+                  "  Object.keys(expected).forEach(function (key) { pm.expect(actual[key]).to.eql(expected[key]); });",
+                  "});",
+                  "pm.test(\"Fechas automaticas\", function () {",
+                  "  const actual = pm.response.json();",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaCreacion))).to.eql(true);",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaActualizacion))).to.eql(true);",
+                  "});"
                 ]
               }
             }
@@ -485,7 +545,17 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Estado 201\", function () { pm.response.to.have.status(201); });",
-                  "if (pm.response.code === 201) pm.collectionVariables.set(\"tiposId\", pm.response.json().id);"
+                  "if (pm.response.code === 201) pm.collectionVariables.set(\"tiposId\", pm.response.json().id);",
+                  "pm.test(\"Datos guardados\", function () {",
+                  "  const expected = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));",
+                  "  const actual = pm.response.json();",
+                  "  Object.keys(expected).forEach(function (key) { pm.expect(actual[key]).to.eql(expected[key]); });",
+                  "});",
+                  "pm.test(\"Fechas automaticas\", function () {",
+                  "  const actual = pm.response.json();",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaCreacion))).to.eql(true);",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaActualizacion))).to.eql(true);",
+                  "});"
                 ]
               }
             }
@@ -566,7 +636,17 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });"
+                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Datos guardados\", function () {",
+                  "  const expected = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));",
+                  "  const actual = pm.response.json();",
+                  "  Object.keys(expected).forEach(function (key) { pm.expect(actual[key]).to.eql(expected[key]); });",
+                  "});",
+                  "pm.test(\"Fechas automaticas\", function () {",
+                  "  const actual = pm.response.json();",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaCreacion))).to.eql(true);",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaActualizacion))).to.eql(true);",
+                  "});"
                 ]
               }
             }
@@ -629,7 +709,17 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Estado 201\", function () { pm.response.to.have.status(201); });",
-                  "if (pm.response.code === 201) pm.collectionVariables.set(\"mediaId\", pm.response.json().id);"
+                  "if (pm.response.code === 201) pm.collectionVariables.set(\"mediaId\", pm.response.json().id);",
+                  "pm.test(\"Datos guardados\", function () {",
+                  "  const expected = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));",
+                  "  const actual = pm.response.json();",
+                  "  Object.keys(expected).forEach(function (key) { pm.expect(actual[key]).to.eql(expected[key]); });",
+                  "});",
+                  "pm.test(\"Fechas automaticas\", function () {",
+                  "  const actual = pm.response.json();",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaCreacion))).to.eql(true);",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaActualizacion))).to.eql(true);",
+                  "});"
                 ]
               }
             }
@@ -710,7 +800,17 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });"
+                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Datos guardados\", function () {",
+                  "  const expected = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));",
+                  "  const actual = pm.response.json();",
+                  "  Object.keys(expected).forEach(function (key) { pm.expect(actual[key]).to.eql(expected[key]); });",
+                  "});",
+                  "pm.test(\"Fechas automaticas\", function () {",
+                  "  const actual = pm.response.json();",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaCreacion))).to.eql(true);",
+                  "  pm.expect(Number.isFinite(Date.parse(actual.fechaActualizacion))).to.eql(true);",
+                  "});"
                 ]
               }
             }
@@ -735,6 +835,479 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Validaciones del caso",
+      "item": [
+        {
+          "name": "Rechazar serial duplicado",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/media",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"serial\": \"MED-{{runId}}\",\n  \"titulo\": \"Una historia para contar\",\n  \"sinopsis\": \"Un grupo de amigos prepara su primera pelicula.\",\n  \"url\": \"https://example.com/videos/{{runId}}-otra.mp4\",\n  \"portada\": \"https://example.com/portada.jpg\",\n  \"anioEstreno\": 2024,\n  \"generoId\": {{generosId}},\n  \"directorId\": {{directoresId}},\n  \"productoraId\": {{productorasId}},\n  \"tipoId\": {{tiposId}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Estado 409\", function () { pm.response.to.have.status(409); });",
+                  "pm.test(\"Explica el error\", function () { pm.expect(pm.response.json().error).to.be.a(\"string\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Rechazar URL duplicada",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/media",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"serial\": \"OTRA-{{runId}}\",\n  \"titulo\": \"Una historia para contar\",\n  \"sinopsis\": \"Un grupo de amigos prepara su primera pelicula.\",\n  \"url\": \"https://example.com/videos/{{runId}}.mp4\",\n  \"portada\": \"https://example.com/portada.jpg\",\n  \"anioEstreno\": 2024,\n  \"generoId\": {{generosId}},\n  \"directorId\": {{directoresId}},\n  \"productoraId\": {{productorasId}},\n  \"tipoId\": {{tiposId}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Estado 409\", function () { pm.response.to.have.status(409); });",
+                  "pm.test(\"Explica el error\", function () { pm.expect(pm.response.json().error).to.be.a(\"string\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Desactivar generos",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/generos/{{generosId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"Inactivo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Rechazar media con generos inactivos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/media",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"serial\": \"INACTIVO-{{runId}}\",\n  \"titulo\": \"Una historia para contar\",\n  \"sinopsis\": \"Un grupo de amigos prepara su primera pelicula.\",\n  \"url\": \"https://example.com/videos/{{runId}}-inactivo.mp4\",\n  \"portada\": \"https://example.com/portada.jpg\",\n  \"anioEstreno\": 2024,\n  \"generoId\": {{generosId}},\n  \"directorId\": {{directoresId}},\n  \"productoraId\": {{productorasId}},\n  \"tipoId\": {{tiposId}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Estado 400\", function () { pm.response.to.have.status(400); });",
+                  "pm.test(\"Explica el error\", function () { pm.expect(pm.response.json().error).to.be.a(\"string\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Reactivar generos",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/generos/{{generosId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"Activo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Desactivar directores",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/directores/{{directoresId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"Inactivo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Rechazar media con directores inactivos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/media",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"serial\": \"INACTIVO-{{runId}}\",\n  \"titulo\": \"Una historia para contar\",\n  \"sinopsis\": \"Un grupo de amigos prepara su primera pelicula.\",\n  \"url\": \"https://example.com/videos/{{runId}}-inactivo.mp4\",\n  \"portada\": \"https://example.com/portada.jpg\",\n  \"anioEstreno\": 2024,\n  \"generoId\": {{generosId}},\n  \"directorId\": {{directoresId}},\n  \"productoraId\": {{productorasId}},\n  \"tipoId\": {{tiposId}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Estado 400\", function () { pm.response.to.have.status(400); });",
+                  "pm.test(\"Explica el error\", function () { pm.expect(pm.response.json().error).to.be.a(\"string\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Reactivar directores",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/directores/{{directoresId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"Activo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Desactivar productoras",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/productoras/{{productorasId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"Inactivo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Rechazar media con productoras inactivos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/media",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"serial\": \"INACTIVO-{{runId}}\",\n  \"titulo\": \"Una historia para contar\",\n  \"sinopsis\": \"Un grupo de amigos prepara su primera pelicula.\",\n  \"url\": \"https://example.com/videos/{{runId}}-inactivo.mp4\",\n  \"portada\": \"https://example.com/portada.jpg\",\n  \"anioEstreno\": 2024,\n  \"generoId\": {{generosId}},\n  \"directorId\": {{directoresId}},\n  \"productoraId\": {{productorasId}},\n  \"tipoId\": {{tiposId}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Estado 400\", function () { pm.response.to.have.status(400); });",
+                  "pm.test(\"Explica el error\", function () { pm.expect(pm.response.json().error).to.be.a(\"string\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Reactivar productoras",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/productoras/{{productorasId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"Activo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Estado 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Proteger borrado de generos",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/generos/{{generosId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Estado 409\", function () { pm.response.to.have.status(409); });",
+                  "pm.test(\"Explica el error\", function () { pm.expect(pm.response.json().error).to.be.a(\"string\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Proteger borrado de directores",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/directores/{{directoresId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Estado 409\", function () { pm.response.to.have.status(409); });",
+                  "pm.test(\"Explica el error\", function () { pm.expect(pm.response.json().error).to.be.a(\"string\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Proteger borrado de productoras",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/productoras/{{productorasId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Estado 409\", function () { pm.response.to.have.status(409); });",
+                  "pm.test(\"Explica el error\", function () { pm.expect(pm.response.json().error).to.be.a(\"string\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Proteger borrado de tipos",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tipos/{{tiposId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Estado 409\", function () { pm.response.to.have.status(409); });",
+                  "pm.test(\"Explica el error\", function () { pm.expect(pm.response.json().error).to.be.a(\"string\"); });"
                 ]
               }
             }

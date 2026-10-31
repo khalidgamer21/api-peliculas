@@ -90,7 +90,7 @@ Antes de enviar media debemos crear un director y una productora. Los cuatro ide
 - El anio de estreno debe estar entre 1888 y el anio actual mas cinco.
 - Los catalogos con estado permiten filtrar con ?estado=Activo o ?estado=Inactivo.
 
-La API responde con 201 al crear, 200 al consultar o actualizar y 204 al eliminar. Los errores se devuelven como JSON: 400 para datos invalidos, 404 para rutas o registros inexistentes, 405 para metodos no permitidos, 409 para duplicados o relaciones que impiden borrar y 413 para cuerpos mayores de 1 MB.
+La API responde con 201 al crear, 200 al consultar o actualizar y 204 al eliminar. Los errores se devuelven como JSON: 400 para datos invalidos, 404 para rutas o registros inexistentes, 405 para metodos no permitidos, 409 para duplicados o relaciones que impiden borrar, 413 para cuerpos mayores de 1 MB y 415 cuando el contenido no se envia como application/json.
 
 ## Pruebas con Postman
 
@@ -98,7 +98,7 @@ Importamos Postman.json y verificamos que baseUrl sea http://localhost:3000. Pod
 
 Cada carpeta crea, lista, consulta y actualiza un modulo. La coleccion guarda los identificadores de las respuestas para usarlos en las siguientes solicitudes. Al crear generos tambien genera un valor para que el serial y la URL de media cambien en cada ejecucion. La ultima carpeta elimina los datos de prueba, empezando por media.
 
-Cada solicitud comprueba el estado HTTP esperado. Si una falla, revisamos su respuesta antes de continuar.
+La carpeta Validaciones del caso demuestra el rechazo de seriales y URLs duplicados, la restriccion de catalogos inactivos y la proteccion del borrado de registros asociados. Despues de cada prueba de estado, reactiva el catalogo para continuar. Cada solicitud comprueba el estado HTTP esperado; las creaciones y actualizaciones completas tambien revisan los datos guardados y las fechas. Si una falla, revisamos su respuesta antes de continuar.
 
 ## Pruebas automaticas
 
@@ -106,7 +106,9 @@ Cada solicitud comprueba el estado HTTP esperado. Si una falla, revisamos su res
 npm test
 ```
 
-Las pruebas verifican las operaciones de los cinco modulos, los duplicados, las referencias inexistentes o inactivas, las restricciones de borrado y la persistencia al reabrir la base. Usan bases temporales y no modifican la base de trabajo. GitHub tambien ejecuta estas pruebas al recibir cambios o una solicitud de integracion.
+Las pruebas verifican las operaciones de los cinco modulos, los campos obligatorios, los duplicados, las referencias inexistentes o inactivas, las restricciones de borrado y la persistencia al reabrir la base. Tambien comprueban JSON invalido, campos protegidos, el limite del cuerpo y actualizaciones simultaneas. Usan bases temporales y no modifican la base de trabajo. GitHub ejecuta estas pruebas con Node.js 22.13.0 y 24 al recibir cambios o una solicitud de integracion.
+
+El resultado de la revision y la relacion entre requisitos y pruebas estan en [docs/revision.md](docs/revision.md). El esquema SQL de referencia esta en [docs/base-de-datos.sql](docs/base-de-datos.sql); la API crea estas tablas automaticamente al iniciar.
 
 ## Trabajo en equipo
 

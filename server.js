@@ -21,7 +21,7 @@ export function createApp(filename = 'data/peliculas.db') {
     if (table === 'media') for (const [field, parent] of Object.entries({generoId:'generos',directorId:'directores',productoraId:'productoras',tipoId:'tipos'})) columns.push(`FOREIGN KEY(${field}) REFERENCES ${parent}(id) ON DELETE RESTRICT`);
     db.exec(`CREATE TABLE IF NOT EXISTS ${table}(id INTEGER PRIMARY KEY AUTOINCREMENT,${columns.join(',')})`);
   }
-  for (const [table,names] of [['generos',['Acción','Aventura','Ciencia ficción','Drama','Terror']],['tipos',['Serie','Película']]]) {
+  for (const [table,names] of [['generos',['Accion','Aventura','Ciencia ficcion','Drama','Terror']],['tipos',['Serie','Pelicula']]]) {
     if (!db.prepare(`SELECT count(*) AS n FROM ${table}`).get().n) for (const nombre of names) {
       const now=new Date().toISOString();
       if(table==='generos') db.prepare('INSERT INTO generos(nombre,estado,descripcion,fechaCreacion,fechaActualizacion) VALUES(?,?,?,?,?)').run(nombre,'Activo',nombre,now,now);
@@ -42,24 +42,24 @@ export function createApp(filename = 'data/peliculas.db') {
       if(req.method==='GET') {
         if(rawId) return send(200,existing);
         const estado=url.searchParams.get('estado');
-        if(estado&&!fields.estado) fail(400,'Este módulo no tiene estado');
-        if(estado&&!['Activo','Inactivo'].includes(estado)) fail(400,'Estado inválido');
+        if(estado&&!fields.estado) fail(400,'Este modulo no tiene estado');
+        if(estado&&!['Activo','Inactivo'].includes(estado)) fail(400,'Estado invalido');
         return send(200,estado?db.prepare(`SELECT * FROM ${table} WHERE estado=? ORDER BY id`).all(estado):db.prepare(`SELECT * FROM ${table} ORDER BY id`).all());
       }
       if(req.method==='DELETE'&&rawId){db.prepare(`DELETE FROM ${table} WHERE id=?`).run(id);return send(204);}
-      if(!((req.method==='POST'&&!rawId)||(['PUT','PATCH'].includes(req.method)&&rawId))) {res.setHeader('Allow',rawId?'GET, PUT, PATCH, DELETE':'GET, POST');return send(405,{error:'Método no permitido'});}
+      if(!((req.method==='POST'&&!rawId)||(['PUT','PATCH'].includes(req.method)&&rawId))) {res.setHeader('Allow',rawId?'GET, PUT, PATCH, DELETE':'GET, POST');return send(405,{error:'Metodo no permitido'});}
       let body=''; for await(const chunk of req){body+=chunk;if(Buffer.byteLength(body)>1048576) fail(413,'Cuerpo demasiado grande');}
-      let input;try{input=JSON.parse(body);}catch{fail(400,'JSON inválido');}
+      let input;try{input=JSON.parse(body);}catch{fail(400,'JSON invalido');}
       if(!input||Array.isArray(input)||typeof input!=='object') fail(400,'Se requiere un objeto JSON');
       for(const key of Object.keys(input)) if(!Object.hasOwn(fields,key)) fail(400,`Campo no permitido: ${key}`);
       const values=req.method==='PATCH'?{...existing,...input}:input;
       for(const [key,type] of Object.entries(fields)) {
         const value=values[key];
-        if(['text','url','state'].includes(type)) {if(typeof value!=='string'||!value.trim()||value.length>10000) fail(400,`Campo inválido: ${key}`);values[key]=value.trim();}
+        if(['text','url','state'].includes(type)) {if(typeof value!=='string'||!value.trim()||value.length>10000) fail(400,`Campo invalido: ${key}`);values[key]=value.trim();}
         if(type==='state'&&!['Activo','Inactivo'].includes(value)) fail(400,'Estado debe ser Activo o Inactivo');
-        if(type==='url'){try{if(!['https:','http:'].includes(new URL(values[key]).protocol)) throw Error();}catch{fail(400,`URL inválida: ${key}`);}}
-        if(type==='year'&&(!Number.isInteger(value)||value<1888||value>new Date().getFullYear()+5)) fail(400,'Año de estreno inválido');
-        if(type==='id'&&(!Number.isSafeInteger(value)||value<1)) fail(400,`Referencia inválida: ${key}`);
+        if(type==='url'){try{if(!['https:','http:'].includes(new URL(values[key]).protocol)) throw Error();}catch{fail(400,`URL invalida: ${key}`);}}
+        if(type==='year'&&(!Number.isInteger(value)||value<1888||value>new Date().getFullYear()+5)) fail(400,'Ano de estreno invalido');
+        if(type==='id'&&(!Number.isSafeInteger(value)||value<1)) fail(400,`Referencia invalida: ${key}`);
       }
       if(table==='media') for(const [field,parent] of Object.entries({generoId:'generos',directorId:'directores',productoraId:'productoras',tipoId:'tipos'})) {
         const row=db.prepare(`SELECT * FROM ${parent} WHERE id=?`).get(values[field]);

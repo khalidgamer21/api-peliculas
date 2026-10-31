@@ -1,6 +1,6 @@
 {
   "info": {
-    "name": "API Películas",
+    "name": "API Peliculas",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
@@ -242,7 +242,7 @@
         "url": "{{baseUrl}}/api/tipos",
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"nombre\": \"Documental\",\n  \"descripcion\": \"No ficción\"\n}"
+          "raw": "{\n  \"nombre\": \"Documental\",\n  \"descripcion\": \"No ficcion\"\n}"
         }
       }
     },
@@ -285,7 +285,7 @@
         "url": "{{baseUrl}}/api/tipos/1",
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"nombre\": \"Documental\",\n  \"descripcion\": \"No ficción\"\n}"
+          "raw": "{\n  \"nombre\": \"Documental\",\n  \"descripcion\": \"No ficcion\"\n}"
         }
       }
     },
@@ -315,7 +315,7 @@
         "url": "{{baseUrl}}/api/media",
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"serial\": \"MED-001\",\n  \"titulo\": \"Producción de ejemplo\",\n  \"sinopsis\": \"Una historia de aprendizaje\",\n  \"url\": \"https://example.com/pelicula.mp4\",\n  \"portada\": \"https://example.com/portada.jpg\",\n  \"anioEstreno\": 2024,\n  \"generoId\": 1,\n  \"directorId\": 1,\n  \"productoraId\": 1,\n  \"tipoId\": 1\n}"
+          "raw": "{\n  \"serial\": \"MED-001\",\n  \"titulo\": \"Produccion de ejemplo\",\n  \"sinopsis\": \"Una historia de aprendizaje\",\n  \"url\": \"https://example.com/pelicula.mp4\",\n  \"portada\": \"https://example.com/portada.jpg\",\n  \"anioEstreno\": 2024,\n  \"generoId\": 1,\n  \"directorId\": 1,\n  \"productoraId\": 1,\n  \"tipoId\": 1\n}"
         }
       }
     },
@@ -358,7 +358,7 @@
         "url": "{{baseUrl}}/api/media/1",
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"serial\": \"MED-001\",\n  \"titulo\": \"Producción de ejemplo\",\n  \"sinopsis\": \"Una historia de aprendizaje\",\n  \"url\": \"https://example.com/pelicula.mp4\",\n  \"portada\": \"https://example.com/portada.jpg\",\n  \"anioEstreno\": 2024,\n  \"generoId\": 1,\n  \"directorId\": 1,\n  \"productoraId\": 1,\n  \"tipoId\": 1\n}"
+          "raw": "{\n  \"serial\": \"MED-001\",\n  \"titulo\": \"Produccion de ejemplo\",\n  \"sinopsis\": \"Una historia de aprendizaje\",\n  \"url\": \"https://example.com/pelicula.mp4\",\n  \"portada\": \"https://example.com/portada.jpg\",\n  \"anioEstreno\": 2024,\n  \"generoId\": 1,\n  \"directorId\": 1,\n  \"productoraId\": 1,\n  \"tipoId\": 1\n}"
         }
       }
     },

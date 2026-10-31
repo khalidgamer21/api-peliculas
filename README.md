@@ -1,6 +1,6 @@
 # API de peliculas y series
 
-Este proyecto corresponde al caso de estudio de Ingenieria Web II. La idea es administrar un catalogo de peliculas y series desde una API REST. Organizamos la informacion en cinco modulos: generos, directores, productoras, tipos y media.
+Este proyecto corresponde al caso de estudio de proyecto integrador dos. La idea es administrar un catalogo de peliculas y series desde una API REST. Organizamos la informacion en cinco modulos: generos, directores, productoras, tipos y media.
 
 ## Integrantes
 

@@ -1,0 +1,379 @@
+{
+  "info": {
+    "name": "API Películas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "POST generos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/generos",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Comedia\",\n  \"estado\": \"Activo\",\n  \"descripcion\": \"Humor\"\n}"
+        }
+      }
+    },
+    {
+      "name": "GET generos",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/generos"
+      }
+    },
+    {
+      "name": "GET generos/1",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/generos/1"
+      }
+    },
+    {
+      "name": "PUT generos/1",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/generos/1",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Comedia\",\n  \"estado\": \"Activo\",\n  \"descripcion\": \"Humor\"\n}"
+        }
+      }
+    },
+    {
+      "name": "DELETE generos/1",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/generos/1"
+      }
+    },
+    {
+      "name": "POST directores",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/directores",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombres\": \"Directora de ejemplo\",\n  \"estado\": \"Activo\"\n}"
+        }
+      }
+    },
+    {
+      "name": "GET directores",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/directores"
+      }
+    },
+    {
+      "name": "GET directores/1",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/directores/1"
+      }
+    },
+    {
+      "name": "PUT directores/1",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/directores/1",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombres\": \"Directora de ejemplo\",\n  \"estado\": \"Activo\"\n}"
+        }
+      }
+    },
+    {
+      "name": "DELETE directores/1",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/directores/1"
+      }
+    },
+    {
+      "name": "POST productoras",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/productoras",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Estudio universitario\",\n  \"estado\": \"Activo\",\n  \"slogan\": \"Historias para todos\",\n  \"descripcion\": \"Productora de ejemplo\"\n}"
+        }
+      }
+    },
+    {
+      "name": "GET productoras",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/productoras"
+      }
+    },
+    {
+      "name": "GET productoras/1",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/productoras/1"
+      }
+    },
+    {
+      "name": "PUT productoras/1",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/productoras/1",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Estudio universitario\",\n  \"estado\": \"Activo\",\n  \"slogan\": \"Historias para todos\",\n  \"descripcion\": \"Productora de ejemplo\"\n}"
+        }
+      }
+    },
+    {
+      "name": "DELETE productoras/1",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/productoras/1"
+      }
+    },
+    {
+      "name": "POST tipos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/tipos",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Documental\",\n  \"descripcion\": \"No ficción\"\n}"
+        }
+      }
+    },
+    {
+      "name": "GET tipos",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/tipos"
+      }
+    },
+    {
+      "name": "GET tipos/1",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/tipos/1"
+      }
+    },
+    {
+      "name": "PUT tipos/1",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/tipos/1",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Documental\",\n  \"descripcion\": \"No ficción\"\n}"
+        }
+      }
+    },
+    {
+      "name": "DELETE tipos/1",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/tipos/1"
+      }
+    },
+    {
+      "name": "POST media",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/media",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"serial\": \"MED-001\",\n  \"titulo\": \"Producción de ejemplo\",\n  \"sinopsis\": \"Una historia de aprendizaje\",\n  \"url\": \"https://example.com/pelicula.mp4\",\n  \"portada\": \"https://example.com/portada.jpg\",\n  \"anioEstreno\": 2024,\n  \"generoId\": 1,\n  \"directorId\": 1,\n  \"productoraId\": 1,\n  \"tipoId\": 1\n}"
+        }
+      }
+    },
+    {
+      "name": "GET media",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/media"
+      }
+    },
+    {
+      "name": "GET media/1",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/media/1"
+      }
+    },
+    {
+      "name": "PUT media/1",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/media/1",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"serial\": \"MED-001\",\n  \"titulo\": \"Producción de ejemplo\",\n  \"sinopsis\": \"Una historia de aprendizaje\",\n  \"url\": \"https://example.com/pelicula.mp4\",\n  \"portada\": \"https://example.com/portada.jpg\",\n  \"anioEstreno\": 2024,\n  \"generoId\": 1,\n  \"directorId\": 1,\n  \"productoraId\": 1,\n  \"tipoId\": 1\n}"
+        }
+      }
+    },
+    {
+      "name": "DELETE media/1",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/media/1"
+      }
+    }
+  ]
+}

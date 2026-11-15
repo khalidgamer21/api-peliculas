@@ -110,20 +110,3 @@ Las pruebas verifican las operaciones de los cinco modulos, los campos obligator
 
 El resultado de la revision y la relacion entre requisitos y pruebas estan en [docs/revision.md](docs/revision.md). El esquema SQL de referencia esta en [docs/base-de-datos.sql](docs/base-de-datos.sql); la API crea estas tablas automaticamente al iniciar.
 
-## Trabajo en equipo
-
-Cada integrante puede clonar el repositorio y crear una rama para sus cambios. Conviene usar nombres relacionados con la tarea, por ejemplo generos, pruebas o documentacion, y mensajes de commit que expliquen lo realizado. Antes de integrar cambios en main, ejecutamos las pruebas y revisamos la propuesta entre los integrantes.
-
-## Video de la entrega
-
-Podemos organizar la explicacion en unos cuatro minutos:
-
-1. Presentarnos y nombrar a los dos integrantes.
-2. Explicar las cinco tablas y sus relaciones.
-3. Iniciar la API y mostrar la creacion y actualizacion de cada modulo en Postman.
-4. Mostrar una consulta, el rechazo de un duplicado y una eliminacion.
-5. Ejecutar las pruebas y comentar lo aprendido.
-
-Para entregar compartimos el enlace del repositorio y el enlace de Google Drive del video. Como el repositorio es privado, debemos dar acceso al tutor antes de enviarlo. El video debe durar entre tres y cinco minutos.
-
-El alcance de esta actividad es el backend. La API administra los datos del catalogo; la interfaz web y la reproduccion de videos corresponden a otro desarrollo. El caso no exige registro de usuarios ni autenticacion.

@@ -2,6 +2,8 @@
 
 Este proyecto corresponde al caso de estudio de proyecto integrador dos. La idea es administrar un catalogo de peliculas y series desde una API REST. Organizamos la informacion en cinco modulos: generos, directores, productoras, tipos y media.
 
+La segunda entrega agrega una [aplicacion web en React](web/README.md) para gestionar los mismos modulos desde el navegador.
+
 ## Integrantes
 
 - Yimy Antonio Mosquera Asprilla
@@ -126,4 +128,4 @@ Podemos organizar la explicacion en unos cuatro minutos:
 
 Para entregar compartimos el enlace del repositorio y el enlace de Google Drive del video. Como el repositorio es privado, debemos dar acceso al tutor antes de enviarlo. El video debe durar entre tres y cinco minutos.
 
-El alcance de esta actividad es el backend. La API administra los datos del catalogo; la interfaz web y la reproduccion de videos corresponden a otro desarrollo. El caso no exige registro de usuarios ni autenticacion.
+La API administra los datos del catalogo. La segunda actividad usa esta API para consultar y editar los datos desde la interfaz web. El caso no exige registro de usuarios ni autenticacion.

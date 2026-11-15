@@ -1,3 +1,5 @@
 data/
 node_modules/
 *.db*
+web/dist/
+web/*.local

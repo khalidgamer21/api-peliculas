@@ -6,6 +6,8 @@ La segunda entrega agrega una [aplicacion web en React](web/README.md) para gest
 
 La tercera entrega incluye la [configuracion para desplegar el backend y el frontend en Railway](docs/despliegue.md).
 
+Podemos abrir la [aplicacion publicada en Railway](https://api-peliculas-production-80747e62.up.railway.app/media) y consultar el [estado de la API](https://api-peliculas-production-80747e62.up.railway.app/health).
+
 ## Integrantes
 
 - Yimy Antonio Mosquera Asprilla

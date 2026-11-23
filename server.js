@@ -3,6 +3,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { serveStatic } from './static.js';
 
 const MAX_BODY_BYTES = 1024 * 1024;
 
@@ -44,7 +45,7 @@ async function readJson(req) {
   return input;
 }
 
-export function createApp(filename = 'data/peliculas.db') {
+export function createApp(filename = 'data/peliculas.db', { staticDir } = {}) {
   if (filename !== ':memory:')
     mkdirSync(resolve(filename, '..'), { recursive: true });
   const db = new DatabaseSync(filename);
@@ -126,7 +127,10 @@ export function createApp(filename = 'data/peliculas.db') {
       const match = url.pathname.match(
         /^\/api\/(generos|directores|productoras|tipos|media)(?:\/(\d+))?\/?$/
       );
-      if (!match) return send(404, { error: 'Ruta no encontrada' });
+      if (!match) {
+        if (staticDir && await serveStatic(req, res, url, staticDir)) return;
+        return send(404, { error: 'Ruta no encontrada' });
+      }
       const [, table, rawId] = match,
         id = Number(rawId),
         fields = schemas[table];
@@ -273,8 +277,10 @@ if (
   if (!Number.isInteger(port) || port < 0 || port > 65535) {
     throw new Error('PORT debe ser un entero entre 0 y 65535');
   }
-  const server = createApp(process.env.DB_PATH);
-  server.listen(port, '127.0.0.1', () => {
+  const host = process.env.HOST || '127.0.0.1';
+  const staticDir = process.env.STATIC_DIR || fileURLToPath(new URL('./web/dist/', import.meta.url));
+  const server = createApp(process.env.DB_PATH, { staticDir });
+  server.listen(port, host, () => {
     console.log(`API disponible en http://localhost:${server.address().port}`);
   });
 }

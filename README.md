@@ -4,6 +4,8 @@ Este proyecto corresponde al caso de estudio de proyecto integrador dos. La idea
 
 La segunda entrega agrega una [aplicacion web en React](web/README.md) para gestionar los mismos modulos desde el navegador.
 
+La tercera entrega incluye la [configuracion para desplegar el backend y el frontend en Railway](docs/despliegue.md).
+
 ## Integrantes
 
 - Yimy Antonio Mosquera Asprilla
@@ -126,6 +128,6 @@ Podemos organizar la explicacion en unos cuatro minutos:
 4. Mostrar una consulta, el rechazo de un duplicado y una eliminacion.
 5. Ejecutar las pruebas y comentar lo aprendido.
 
-Para entregar compartimos el enlace del repositorio y el enlace de Google Drive del video. Como el repositorio es privado, debemos dar acceso al tutor antes de enviarlo. El video debe durar entre tres y cinco minutos.
+Para entregar compartimos el enlace del repositorio y el enlace de Google Drive del video. El repositorio es publico y se puede abrir sin iniciar sesion. El video debe durar entre tres y cinco minutos.
 
 La API administra los datos del catalogo. La segunda actividad usa esta API para consultar y editar los datos desde la interfaz web. El caso no exige registro de usuarios ni autenticacion.

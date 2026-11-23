@@ -18,11 +18,11 @@ El comando build instala las dependencias de web y crea la carpeta web/dist. El 
 
 1. Iniciamos sesion en Railway y creamos un proyecto desde el repositorio khalidgamer21/api-peliculas.
 2. En Source seleccionamos la rama codex/ea3-cloud y dejamos la raiz del repositorio como directorio de trabajo.
-3. Railway toma los comandos de railway.toml. Compila con npm run build y arranca con npm start.
-4. En Variables agregamos HOST=0.0.0.0, NODE_ENV=production, RAILPACK_NODE_VERSION=24 y DB_PATH=/data/peliculas.db. Railway asigna PORT al servidor.
+3. Railway detecta el Dockerfile. La primera etapa instala las dependencias y compila React. La segunda copia los archivos compilados y arranca con node server.js.
+4. El Dockerfile define Node.js 24, HOST=0.0.0.0, NODE_ENV=production y DB_PATH=/data/peliculas.db. Railway asigna PORT al servidor.
 5. Creamos un volumen y lo montamos en /data. La base SQLite se guarda dentro de ese volumen.
 6. Desplegamos los cambios y revisamos los registros hasta que el servicio aparezca disponible.
-7. En Networking generamos el dominio publico y abrimos la aplicacion con HTTPS.
+7. En Settings indicamos /health como Healthcheck Path. En Networking generamos el dominio publico y abrimos la aplicacion con HTTPS.
 
 ## Comprobar la aplicacion
 
@@ -32,6 +32,6 @@ El plan gratuito o de prueba tiene limites de uso. La disponibilidad del servici
 
 ## Fuentes
 
-- [Configuracion del servicio](https://docs.railway.com/config-as-code)
+- [Despliegue con Docker](https://docs.railway.com/builds/dockerfiles)
 - [Volumenes persistentes](https://docs.railway.com/volumes)
 - [Plan gratuito](https://docs.railway.com/pricing/free-plan)
